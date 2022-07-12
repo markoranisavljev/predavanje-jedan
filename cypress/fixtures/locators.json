@@ -1,0 +1,24 @@
+{
+"login": {
+    "loginButton": ".nav.link",
+    "emailInput": "#email",
+    "passwordInput": "#password",
+    "submitButton": "button" 
+},
+
+"register": {
+    "registerButtonInput": ".nav.link",
+    "registerEmailInput": "#email",
+    "registerPasswordInput": "#password",
+    "registerSubmitButton": "button" 
+}
+
+} 
+
+
+
+
+    
+
+
+    

@@ -1,5 +1,7 @@
 /// <reference types ="Cypress" />
 
+const Locator = require('../fixtures/locators.json')
+
 describe ('gallery app', () => {
 it('login withot "@" in email', () => {
   cy.visit('https://gallery-app.vivifyideas.com/');
