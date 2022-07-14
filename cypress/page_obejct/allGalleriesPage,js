@@ -1,0 +1,13 @@
+
+
+class AllGalleriesPage {
+
+    get allGalleriesHeading() {
+        return cy.get('h1')
+    }
+
+    
+
+
+}
+ export const allGalleriesPage = new AllGalleriesPage();

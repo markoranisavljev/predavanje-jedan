@@ -1,17 +1,33 @@
-const cypress = require("cypress");
+/// <reference types="Cypress" />
 
 class LoginPage {
 
-    get emailInput() {
-        return cypress.get('#email')
+    get loginPageHeading() {
+        return cy.get('h1');
     }
-get passworInput() {
-    return cypress.get('#password')
+
+    get emailInput() {
+        return cy.get('#email');
+    }
+
+    get passwordInput() {
+        return cy.get('#password')
+    }
+
+    get submitButton() {
+        return cy.get('button');
+    }
+
+    get errorMessage() {
+        return cy.get('p[class="alert alert-danger"]')
+    }
+
+    login(email, password) {
+        this.emailInput.type(email)
+        this.passwordInput.type(password)
+        this.submitButton.click()
+    }
+
 }
 
-get submitButton() {
-    return cypress.get('#button')
-}
-}
-
-export const LoginPage = new LoginPage();
+export const loginPage = new LoginPage();

@@ -31,7 +31,7 @@ it('login withot password', () => {
 })
 
 
-  xit('login with valid credentials', () => {
+  it('login with valid credentials', () => {
     cy.visit('https://gallery-app.vivifyideas.com/');
     cy.get('.nav-link').eq(1).click();
     cy.url().should('include', 'login');
@@ -41,7 +41,7 @@ it('login withot password', () => {
     cy.url().should('not.include', 'login');
   })
 
-  xit('logout test', () => {
+  it('logout test', () => {
 cy.get('.nav-link').should('have.length', 4)
     cy.get('.nav-link').eq(3).click();
   })
