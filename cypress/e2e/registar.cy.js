@@ -1,3 +1,6 @@
+import { RegisterPage } from '../page_objects/registarPage.js.js';
+
+
 describe('registration test', () => {
 
     it('registar without any credentials', () => {
@@ -22,7 +25,7 @@ describe('registration test', () => {
                 cy.get('button').click();
                     }) 
                     
-    it('registar without password', () => {
+    it.only('registar without password', () => {
                         cy.visit('/register')
                         cy.get('#first-name').type('Marko')
                         cy.get('#last-name').type('Markovic')

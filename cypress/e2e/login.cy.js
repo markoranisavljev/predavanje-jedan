@@ -1,14 +1,14 @@
 /// <reference types ="Cypress" />
 
-const Locator = require('../fixtures/locators.json')
+const locators = require('../fixtures/locators.json')
 
 describe ('gallery app', () => {
 it('login withot "@" in email', () => {
   cy.visit('https://gallery-app.vivifyideas.com/');
   cy.get('.nav-link').eq(1).click();
   cy.url().should('include', '/login');
-  cy.get('#email').type('marko.ranisavljev91gmail.com');
-  cy.get('#password').type('miholjdan1991');
+  cy.get(locators.login.emailInput).type('marko.ranisavljev91gmail.com');
+  cy.get(locators.login.passwordInput).type('miholjdan1991')
   cy.get('button').click();
 })
 

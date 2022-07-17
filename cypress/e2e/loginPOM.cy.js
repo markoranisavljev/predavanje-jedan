@@ -14,18 +14,14 @@ describe('login test', () => {
       cy.get('input').should('have.length', 2)
   })
 
-  it.only('login with valid credentials', () => {
+  it('login with valid credentials', () => {
     loginPage.login(validEmail, validPassword)
     cy.url().should('not.contains', '/login')
   })
 
-  it.only('login with invalid credentials', () => {
+  it('login with invalid credentials', () => {
     loginPage.login('rwerew', 'ewrqewq')
     cy.url().should('contains', '/login')
-    loginPage.errorMessage.should('be.visible')
-    loginPage.errorMessage.should('exist')
-    loginPage.errorMessage.should('have.text', 'Bad credentials')
-    loginPage.errorMessage.should('have.css','background-color', 'rgb(248,215,218)')
   })
 
 })
