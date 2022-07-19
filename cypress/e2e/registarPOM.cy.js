@@ -55,7 +55,7 @@ describe('register test', () => {
         cy.url().should('include', '/register');
     })
 
-    it.only('register when password confirmation don\'t match', () => {
+    it('register when password confirmation don\'t match', () => {
         registerPage.registerWhenPasswordsDontMatch(
             'ime', 
             'prezime', 
@@ -71,7 +71,30 @@ describe('register test', () => {
         cy.url().should('include', '/register');
     })
 
-})
+    it.only('register with valid email', () => {
+
+        cy.intercept({
+            method: 'POST',
+            url: cypress.env('API_BASE_URL') + '/auth/register'
+        }).as('validRegister');
+
+        registerPage.registerWithValidEmail(
+            'ime', 
+            'prezime', 
+            'mail2@mail.com', 
+            'Test12345', 
+            'Test12345'
+            )
+            cy.wait('@validRegister').then(interception => {
+                console.log(interception)
+                expect(interception.response.statusCode).eq(200)
+                expect(interception.request.body.acces_token).to.exist;
+                expect(interception.request.body.terms_and_conditions).to.be.true;
+            })
+
+            })
+
+        })
 
 
 

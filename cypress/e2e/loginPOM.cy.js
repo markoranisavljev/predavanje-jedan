@@ -15,7 +15,16 @@ describe('login test', () => {
   })
 
   it('login with valid credentials', () => {
+cy.intercept({
+  method: 'POST',
+  url: Cypress.env('API_BASE_URL' + '/auth/login')
+}).as('validLogin')
+
     loginPage.login(validEmail, validPassword)
+    cy.wait('@validLogin').then(interception =>{
+      console.group(interception.response.statusCode);
+      expect(interception.response.statusCode).eq(200);
+    })
     cy.url().should('not.contains', '/login')
   })
 
